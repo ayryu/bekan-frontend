@@ -1,9 +1,9 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/posts'
+const baseUrl = '/api/posts'
 
   const getAll = () => {
-      const request = axios.get(baseUrl)
-      return request.then(response => response.data)
+      const request = axios.get(baseUrl);
+      return request.then(response => response.data);
   }
 
   const getPostByID = (id) => {
