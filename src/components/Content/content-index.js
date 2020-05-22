@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     position: "relative",
-    height: 400,
+    height: 800,
     maxWidth: "auto",
     marginBottom: 30,
   },
   bannerText: {
     position: "absolute",
-    top: 350,
+    top: 700,
     bottom: 0,
     right: 0,
     left: 330,
