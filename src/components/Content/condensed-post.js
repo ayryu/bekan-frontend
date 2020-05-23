@@ -12,7 +12,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import LaunchIcon from '@material-ui/icons/Launch';
 import { makeStyles } from '@material-ui/core/styles';
-import PostService from '../services/postService';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
     },
     shareIcon: {
-        marginRight: 140,
+        // right: 130,
     },
     paper: {
         padding: theme.spacing(1),

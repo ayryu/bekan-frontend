@@ -1,6 +1,5 @@
 import React, { useState, useEffect  } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -10,26 +9,18 @@ import CondensedPost from './condensed-post';
 import postService from '../services/postService';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  card: {
+    marginBottom: 40,
   },
   media: {
-    position: "relative",
-    height: 800,
-    maxWidth: "auto",
-    marginBottom: 30,
+    height: "84vh",
+    position: 'relative',
+    // paddingTop: '56.25%',
   },
   bannerText: {
-    position: "absolute",
-    top: 700,
-    bottom: 0,
-    right: 0,
-    left: 330,
-  },
-  paper: {
-    padding: theme.spacing(1),
+    position: 'absolute',
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    bottom: "0vh", 
   },
 }));
 
@@ -53,27 +44,30 @@ const Content = () => {
       console.log('Posts are: ', posts)
 
     return (
-        <div>
-          <Card>
-            <CardMedia
-              className={classes.media}
-              image={banner.image}
-            />
-            <Typography className={classes.bannerText} gutterBottom variant="h1" component="h1">
-              <Box fontWeight="fontWeightMedium">
-                {banner.category}
-              </Box>
-            </Typography>
+      <>
+          <Card className={classes.card}>
+                <div style={ {position: 'relative'}}>
+                <CardMedia
+                  className={classes.media}
+                  image={banner.image}
+                />
+                  <div className={classes.bannerText}>
+                  <Typography variant="h1">
+                    <Box fontWeight="fontWeightMedium">
+                      {banner.category}
+                    </Box>
+                  </Typography>
+                  </div>
+                </div>
           </Card>
-          <Grid container className={classes.root} spacing={1}>
+          <Grid container className={classes.grid} spacing={1}>
                   {posts.map(post =>
-                    <Grid item xs={4}>
+                    <Grid item sm={4} xs={12}>
                       <CondensedPost key={post.id} content={post}/>
                     </Grid>
                   )}
           </Grid>
-
-        </div>
+      </>
     )
 }
 
