@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
 import PostService from '../services/postService';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +30,6 @@ const PostForm = () => {
         content: '',
         id: ''
     })
-    const [ buttonStatus, setButtonStatus ] = useState(false)
 
     const fillNewPostInfo = param => {      //To render the updated values
         return (event) => {
