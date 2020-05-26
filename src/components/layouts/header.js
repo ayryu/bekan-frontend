@@ -38,7 +38,7 @@ const Header = () => {
                                 <AssistantIcon />
                                 <Typography variant="h4">
                                     <Box fontWeight="fontWeightBold">
-                                        Bēkʌɳ
+                                        Bekʌɳ
                                     </Box>
                                 </Typography>
                             </IconButton>
@@ -50,7 +50,7 @@ const Header = () => {
                         <Link to="/createNewPost">
                             <Button
                                 variant="contained"
-                                color="inherit"
+                                color="primary"
                             >
                                 Create Post
                             </Button>

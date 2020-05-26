@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 import PostService from '../services/postService';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    media: {
-      height: 250,
-    },
-    content: {
-        padding: 20, 
-        margin:20,
-        height: "100%",
+const useStyles = makeStyles(theme => ({
+    form: {
+      width: '100%',
     },
     paper: {
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+      marginTop: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
+    postButton: {
+      margin: theme.spacing(1, 0, 6),
+    }
   }));
 
 const PostForm = () => {
@@ -38,43 +36,59 @@ const PostForm = () => {
         }
       }
     
-      const createNewPost = (event) => {
-        if(newPost.title.length === 0 || newPost.content.length === 0) {
-          event.preventDefault();
-          alert('Oh no why is you doing that, there needs to be something :(');
-        } 
-
+      const createNewPost = (e) => {
+        e.preventDefault();
         const createdPost = {
           title: newPost.title,
-          content: newPost.content,
-          id: "500"
+          content: newPost.content
         }
 
         PostService.create(createdPost)
         console.log("A post has been created!");
       }
 
-
-
     return (
-            <form action="/"
-            onSubmit={createNewPost}>
-                <div>
-                    <input className={classes.root}
-                    value={newPost.title} 
-                    onChange={fillNewPostInfo('title')}
-                    placeholder="Title"/>
-                    <textarea className={classes.root}
-                    rows="20"
-                    cols="40"
-                    value={newPost.content} 
-                    onChange={fillNewPostInfo('content')}
-                    placeholder="What topic would you like to explore?"></textarea>
-                    </div>
-                    <div>
-                        <button id="submit" type="submit">Submit Post</button>
+          <div>
+              <Container maxWidth="sm">
+              <CssBaseline />
+                <div className={classes.paper}>
+                  <form action="/"
+                    className={classes.form}
+                    onSubmit={createNewPost}>
+                    <TextField
+                      
+                      required
+                      fullWidth
+                      label="Title"
+                      variant="filled"
+                      value={newPost.title} 
+                      onChange={fillNewPostInfo('title')}
+                    />
+                    <>
+                    <TextField
+                      required
+                      fullWidth
+                      label="Post"
+                      multiline
+                      rows={10}
+                      placeholder="What topic would you like to explore?"
+                      variant="filled"
+                      value={newPost.content} 
+                      onChange={fillNewPostInfo('content')}/>
+
+                      <div>
+                      <Button className={classes.postButton} type="submit" variant="contained" color="secondary">
+                        Submit Post
+                      </Button>
+                      </div>
+
+                    </>
+                  </form>
                 </div>
-            </form>
+              </Container>
+            
+          </div>
+            
     )
 }
 
